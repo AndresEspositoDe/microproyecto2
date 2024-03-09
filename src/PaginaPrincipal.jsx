@@ -1,9 +1,12 @@
 import React from 'react'
+import {getAuth, signOut} from 'firebase/auth'
+import f from "./firebase"
 
-const PaginaPrincipal = () => {
+const auth = getAuth(f)
+const PaginaPrincipal = ({correousuario}) => {
   return (
     <div>
-        <h1> Pagina Principal</h1>
+        <h1> Pagina Principal {correousuario}</h1><button onClick={()=>signOut(auth)}>logout</button>
     </div>
   )
 }

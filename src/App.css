@@ -1,0 +1,42 @@
+.padre {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.imagen-inicio{
+    height: 800px;
+    height: 100%;
+    margin-top: 100px;
+}
+
+.caja{
+
+    border-radius: 20px;
+    background-color: rgb(211, 211, 211);
+    width: 100%;
+    padding: 15px;
+    border-width: 0px;
+    margin-bottom: 20px;
+
+}
+
+.Botonr{
+    background-color: rgb(95, 95, 255);
+    border-radius: 40px;
+    width: 100%;
+    padding: 15px;
+    border-width: 0px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.cuadro {
+    margin: 80px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container {
+    background-color: blue;
+}
