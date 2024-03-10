@@ -76,9 +76,22 @@ max-width: 50%;
     font-size: 100px;
     font-family: fantasy;
 }
+.Buscador{
+    width: 90%;
+    border-radius: 50px;
+    margin: 5px;
+    background-color: white;
+    
+}
+
+.Botonp{
+    border-radius: 50px;
+    background-color: gray;
+    color: white;
+}
 
 @media (max-width: 768px) {
-.t1, .container, .img-i, .titulo, .App, .cuadro, .Botonr, .Botonr2, .caja, .imagen-inicio, .padre {
+.t1, .container, .img-i, .titulo, .App, .cuadro, .Botonr, .Botonr2, .caja, .imagen-inicio, .padre, .Buscador,.Botonp {
         font-size: 20px;
     }
 }

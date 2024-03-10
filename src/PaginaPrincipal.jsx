@@ -84,11 +84,12 @@ const PaginaPrincipal = ({ username }) => {
             placeholder="Buscar videojuego"
             value={busqueda}
             onChange={(e) => setBusqueda(e.target.value)}
+            className='Buscador'
           />
-          <button onClick={handleBusqueda}>Buscar</button>
+          <button className='Botonp' onClick={handleBusqueda}>Buscar</button>
 
           {resultadosBusqueda.length > 0 && (
-            <div className='container'>
+            <div className='caja'>
               <h2>Resultados de la búsqueda:</h2>
               {resultadosBusqueda.map((resultado, index) => (
                 <div key={index}>
