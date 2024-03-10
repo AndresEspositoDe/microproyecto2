@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import f from './firebase';
 import { getAuth, signOut } from 'firebase/auth';
-import { getFirestore, collection, getDocs, doc, setDoc } from 'firebase/firestore'; // Añadido setDoc
+import { getFirestore, collection, getDocs, doc, setDoc, query, where} from 'firebase/firestore'; // Añadido setDoc
 
 const auth = getAuth(f);
 const bd = getFirestore(f);
@@ -12,6 +12,8 @@ const PaginaPrincipal = ({ username }) => {
   const [descripcionSeleccionada, setDescripcionSeleccionada] = useState("");
   const [suscrito, setSuscrito] = useState(false);
   const [clubesSuscritos, setClubesSuscritos] = useState([]);
+  const [busqueda, setBusqueda] = useState("");
+  const [resultadosBusqueda, setResultadosBusqueda] = useState([]);
 
   useEffect(() => {
     const getLista = async () => {
@@ -58,12 +60,49 @@ const PaginaPrincipal = ({ username }) => {
     }
   };
 
+  const handleBusqueda = async () => {
+    try {
+      const q = query(collection(bd, 'videojuegos'), where("nombre", "==", busqueda));
+      const querySnapshot = await getDocs(q);
+      const resultados = [];
+      querySnapshot.forEach((doc) => {
+        resultados.push(doc.data());
+      });
+      setResultadosBusqueda(resultados);
+    } catch (error) {
+      console.error("Error al realizar la búsqueda:", error);
+    }
+  };
+
   return (
     <div className='container'>
       <div className='row'>
         <div className='col-md-8'>
           <h2 className='t1'> Bienvenido a EustaquioGames{username}</h2>
-          <button onClick={() => signOut(auth)}>Logout</button>
+          <input
+            type="text"
+            placeholder="Buscar videojuego"
+            value={busqueda}
+            onChange={(e) => setBusqueda(e.target.value)}
+          />
+          <button onClick={handleBusqueda}>Buscar</button>
+
+          {resultadosBusqueda.length > 0 && (
+            <div className='container'>
+              <h2>Resultados de la búsqueda:</h2>
+              {resultadosBusqueda.map((resultado, index) => (
+                <div key={index}>
+                  <p>VideoJuego: {resultado.nombre}</p>
+                  <p>Descripcion: {resultado.descripcion}</p>
+                  <p>Genero: {resultado.genero}</p>
+                  <a href={resultado.imagen}>
+                  <img className='img-i' src={resultado.imagen} alt="Descripción de la imagen" />
+                  </a>
+
+                </div>
+              ))}
+            </div>
+          )}
 
           {lista.map((list) => (
             <div className='container card' key={list.id}>
@@ -76,8 +115,9 @@ const PaginaPrincipal = ({ username }) => {
               </div>
             </div>
           ))}
+          <button className='Botonr2' onClick={() => signOut(auth)}>Logout</button>
         </div>
-        
+
         <div className='col-md-4'>
           {vistaDetallada && (
             <div className='container card' key={vistaDetallada.id}>

@@ -31,6 +31,16 @@
     color: white;
 }
 
+.Botonr2{
+    background-color: red;
+    border-radius: 40px;
+    width: 100%;
+    padding: 15px;
+    border-width: 0px;
+    margin-bottom: 20px;
+    color: white;
+}
+
 .cuadro {
     margin: 80px;
     margin-left: auto;
@@ -65,4 +75,10 @@ max-width: 50%;
     text-align: center;
     font-size: 100px;
     font-family: fantasy;
+}
+
+@media (max-width: 768px) {
+.t1, .container, .img-i, .titulo, .App, .cuadro, .Botonr, .Botonr2, .caja, .imagen-inicio, .padre {
+        font-size: 20px;
+    }
 }
