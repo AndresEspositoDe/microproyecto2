@@ -37,6 +37,32 @@
     margin-right: auto;
 }
 
-.container {
+
+.App {
     background-color: blue;
+}
+
+.titulo {
+    background-color: blueviolet;
+    width: 100%;
+    color: white;
+    font-size: 100px;
+    text-align: center;
+}
+
+.img-i{
+max-width: 50%;
+}
+
+.container {
+    margin: 10px;
+}
+
+.t1 {
+    background-color: black;
+    border-radius: 30px;
+    color: greenyellow;
+    text-align: center;
+    font-size: 100px;
+    font-family: fantasy;
 }

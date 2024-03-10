@@ -3,7 +3,6 @@ import './App.css'
 import app from './firebase'
 import {getAuth} from 'firebase/auth'
 import Inicio from './Inicio'
-import Registro from './Registro'
 import PaginaPrincipal from './PaginaPrincipal'
 import {onAuthStateChanged} from 'firebase/auth'
 const auntenticador = getAuth(app)
@@ -21,7 +20,7 @@ function App() {
     }
     )
     return (
-    <div>
+    <div className="App">
         {usuario ? <PaginaPrincipal correousuario = {usuario.email} /> : <Inicio/>}
     </div>
     )
